@@ -14,9 +14,26 @@ public class Persona {
     private int edad;
     private String dni;
 
+    /**
+     * Constructor vacio.
+     */
     public Persona() {
     }
 
+    /**
+     * Constructor solo con dni.
+     * @param dni
+     */
+    public Persona(String dni) {
+        this.dni = dni;
+    }
+
+    /**
+     * Constructor general.
+     * @param nombre
+     * @param edad
+     * @param dni
+     */
     public Persona(String nombre, int edad, String dni) {
         this.nombre = nombre;
         this.edad = edad;
@@ -63,14 +80,11 @@ public class Persona {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Persona)) {
-            return false;
-        }
-        Persona persona = (Persona) o;
-        return Objects.equals(nombre, persona.nombre) && edad == persona.edad && Objects.equals(dni, persona.dni);
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (!(obj instanceof Persona)) return false;
+        Persona persona = (Persona) obj;
+        return Objects.equals(this.dni, persona.dni);
     }
 
     @Override

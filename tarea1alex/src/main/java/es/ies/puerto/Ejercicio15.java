@@ -11,7 +11,19 @@ import java.util.Arrays;
 public class Ejercicio15 {
     public static void main(String[] args) {
         ArrayList<String> hobbits = new ArrayList<>(Arrays.asList("Bilbo", "Frodo", "Sam", "Pipim", "Merry"));
-        ArrayList<String> hobbits2 = (ArrayList)hobbits.clone();
-        System.out.println(hobbits2);
+        ArrayList<Object> hobitsClonados = clonar(hobbits);
+        System.out.println(hobitsClonados);
+    }
+
+    /**
+     * Función para clonar una lista.
+     * @param list a clonar.
+     * @return una lista vacia si la lista a clonar es null o esta vacia.
+     */
+    public static ArrayList<Object> clonar(ArrayList list) {
+        if(list == null || list.isEmpty()) {
+            return new ArrayList<>();
+        }
+        return (ArrayList)list.clone();
     }
 }

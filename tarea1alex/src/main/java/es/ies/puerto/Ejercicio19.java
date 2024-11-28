@@ -10,26 +10,33 @@ import java.util.ArrayList;
  * Utiliza el if para encontrar a una persona especifica por su dni.
  */
 public class Ejercicio19 {
+    static ArrayList<Persona> personas = new ArrayList<>();
     public static void main(String[] args) {
-        Persona persona1 = new Persona("Alex", 30, "1");
-        Persona persona2 = new Persona("Alex", 30, "2");
-        Persona persona3 = new Persona("Alex", 30, "3");
-        Persona persona4 = new Persona("Alex", 30, "4");
-        Persona persona5 = new Persona("Alex", 30, "5");
-        ArrayList<Persona> personas = new ArrayList<>();
-        personas.add(persona1);
-        personas.add(persona2);
-        personas.add(persona3);
-        personas.add(persona4);
-        personas.add(persona5);
+        personas.add(new Persona("Alex", 30, "1"));
+        personas.add(new Persona("Alex", 30, "2"));
+        personas.add(new Persona("Alex", 30, "3"));
+        personas.add(new Persona("Alex", 30, "4"));
+        personas.add(new Persona("Alex", 30, "5"));
         for (Persona persona : personas) {
             System.out.println(persona);
         }
-        for (Persona persona : personas) {
-            if(persona.getDni().equals("1")) {
-                System.out.println("Persona con dni '1': " + persona);
-                return;
-            }
+        System.out.println(buscarPersona("1"));
+    }
+
+    /**
+     * Función que busca una persona por su dni.
+     * @param dni de la persona a buscar.
+     * @return null si el dni es null, esta vacio o no lo encuentra.
+     */
+    public static Persona buscarPersona(String dni) {
+        if(personas == null || personas.isEmpty()) {
+            return null;
         }
+        Persona personaABuscar = new Persona(dni);
+        int posicion = personas.indexOf(personaABuscar);
+        if(posicion >= 0) {
+            return personas.get(posicion);
+        }
+        return null;
     }
 }
