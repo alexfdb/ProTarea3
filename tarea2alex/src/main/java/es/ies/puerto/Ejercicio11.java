@@ -14,13 +14,12 @@ public class Ejercicio11 {
         for (List<Integer> sublista : sublistas) {
             System.out.println(sublista);
         }
-
     }
 
     /**
      * Función que crea una lista de números enteros.
      * @param tamanio de la lista.
-     * @return una lista con los números especificados
+     * @return una lista con los numeros consecutivos desde 1 hasta el tamaño indicado.
      */
     public static List<Integer> crearListaEnteros(int tamanio) {
         List<Integer> numeros = new ArrayList<>();
@@ -44,5 +43,4 @@ public class Ejercicio11 {
         }
         return sublistas;
     }
-
 }

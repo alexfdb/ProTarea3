@@ -9,18 +9,26 @@ import java.util.List;
  */
 public class Ejercicio18 {
     public static void main(String[] args) {
-        List<Integer> numeros = new ArrayList<>();
-        for (int i = 1; i <= 10; i++) {
-            numeros.add(i);
-        }
+        List<Integer> numeros = new ArrayList<>(crearListaEnteros(10));
 
         System.out.println("Lista original: " + numeros);
 
-        int k = 3;
+        rotarLista(numeros, 3);
 
-        rotarLista(numeros, k);
+        System.out.println("Lista rotada: " + numeros);
+    }
 
-        System.out.println("Lista después de rotar " + k + " posiciones: " + numeros);
+    /**
+     * Función que crea una lista de números enteros.
+     * @param tamanio de la lista.
+     * @return una lista con los números especificados
+     */
+    public static List<Integer> crearListaEnteros(int tamanio) {
+        List<Integer> numeros = new ArrayList<>();
+        for (int i = 1; i <= tamanio; i++) {
+            numeros.add(i);
+        }
+        return numeros;
     }
 
     /**
@@ -28,19 +36,16 @@ public class Ejercicio18 {
      * @param lista La lista que se desea rotar.
      * @param k El número de posiciones hacia la izquierda a rotar.
      */
-    public static void rotarLista(List<Integer> lista, int k) {
-        int size = lista.size();
-        if (size == 0 || k % size == 0) {
-            return;
-        }
-    
-        k = k % size;
-    
+    public static boolean rotarLista(List<Integer> lista, int k) {
+        if(lista == null || lista.isEmpty()) return false; 
+        if(k == lista.size() || k < 0) return false;
+
         List<Integer> sublistaIzquierda = new ArrayList<>(lista.subList(0, k));
-        List<Integer> sublistaDerecha = new ArrayList<>(lista.subList(k, size));
-    
+        List<Integer> sublistaDerecha = new ArrayList<>(lista.subList(k, lista.size()));
+
         lista.clear();
         lista.addAll(sublistaDerecha);
         lista.addAll(sublistaIzquierda);
+        return true;
     }
 }

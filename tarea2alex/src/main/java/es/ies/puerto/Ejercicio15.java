@@ -9,59 +9,76 @@ import java.util.List;
  * categorías, y eliminar categorías vacías.
  */
 public class Ejercicio15 {
+    static List<List<String>> productos = new ArrayList<>();
+    static int electronica = 0;
+    static int libro = 1;
+    static int ropa = 2;
     public static void main(String[] args) {
-        List<List<String>> categorias = new ArrayList<>();
-        categorias.add(new ArrayList<>());
-        categorias.add(new ArrayList<>());
-        categorias.add(new ArrayList<>());
-
-        agregarProducto(categorias, 0, "Manzanas");
-        agregarProducto(categorias, 1, "Leche");
-        agregarProducto(categorias, 1, "Queso");
-        System.out.println("Estado inicial: " + categorias);
-
-        moverProducto(categorias, 1, 2, "Leche");
-        System.out.println("Después de mover: " + categorias);
-
-        eliminarCategoriasVacias(categorias);
-        System.out.println("Después de eliminar vacías: " + categorias);
+        productos.add(crearLista());
+        productos.add(crearLista());
+        productos.add(crearLista());
+        addProducto(productos.get(ropa),"Pantalón");
+        addProducto(productos.get(ropa),"Camiseta");
+        addProducto(productos.get(ropa),"Polo");
+        addProducto(productos.get(electronica),"Cascos");
+        System.out.println(productos);
     }
 
     /**
-     * Agrega un producto a la categoría indicada.
-     * @param categorias Lista de categorías.
-     * @param indiceCategoría Índice de la categoría.
-     * @param producto Producto a agregar.
+     * Función que crea una lista.
+     * @return una lista vacía.
      */
-    public static void agregarProducto(List<List<String>> categorias, int indiceCategoría, String producto) {
-        if (indiceCategoría >= 0 && indiceCategoría < categorias.size()) {
-            categorias.get(indiceCategoría).add(producto);
+    static List<String> crearLista() {
+        return new ArrayList<>();
+    }
+
+    /**
+     * Función que agrega un producto a una lista.
+     * @param lista a la que añadir.
+     * @param producto a añadir.
+     * @return false si la lista o el producto es null.
+     */
+    static boolean addProducto(List<String> lista, String producto) {
+        if(lista == null || producto == null) return false;
+        return lista.add(producto);
+    }
+
+    /**
+     * Función que elimina un producto de una lista.
+     * @param lista donde eliminar el producto
+     * @param producto a eliminar.
+     * @return
+     */
+    static boolean deleteProducto(List<String> lista, String producto) {
+        if(lista == null || lista.isEmpty() || producto == null) return false;
+        return lista.remove(producto);
+    }
+
+    /**
+     * Funcíon que mueve un producto de una lista a otra.
+     * @param listaOrigen
+     * @param listaDestino
+     * @param producto a mover.
+     * @return true si el prducto fue movido.
+     */
+    static boolean moverProducto(List<String> listaOrigen, List<String> listaDestino, String producto) {
+        if(!listaOrigen.contains(producto) || listaDestino.contains(producto)) return false;
+        deleteProducto(listaOrigen, producto);
+        return addProducto(listaDestino, producto);
+    }
+
+    /**
+     * Función que elimina una sublista si sta vacía.
+     * @param lista madre.
+     * @param posicion de la sublista.
+     * @return true si la sublista fue eliminada.
+     */
+    static boolean deleteSubListaEmpty(List<List<String>> lista, int posicion) {
+        if(lista == null || lista.isEmpty()) return false;
+        if(lista.get(posicion).isEmpty()) {
+            lista.remove(posicion);
+            return true;
         }
-    }
-
-    /**
-     * Mueve un producto de una categoría a otra.
-     * @param categorias Lista de categorías.
-     * @param origen Índice de la categoría de origen.
-     * @param destino Índice de la categoría de destino.
-     * @param producto Producto a mover.
-     */
-    public static void moverProducto(List<List<String>> categorias, int origen, int destino, String producto) {
-        if (origen >= 0 && origen < categorias.size() && destino >= 0 && destino < categorias.size()) {
-            List<String> categoriaOrigen = categorias.get(origen);
-            List<String> categoriaDestino = categorias.get(destino);
-
-            if (categoriaOrigen.remove(producto)) {
-                categoriaDestino.add(producto);
-            }
-        }
-    }
-
-    /**
-     * Método que elimina todas las categorías vacías de la lista principal.
-     * @param categorias Lista de categorías.
-     */
-    public static void eliminarCategoriasVacias(List<List<String>> categorias) {
-        categorias.removeIf(List::isEmpty);
+        return false;
     }
 }

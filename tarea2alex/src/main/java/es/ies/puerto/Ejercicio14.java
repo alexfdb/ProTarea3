@@ -10,9 +10,7 @@ import java.util.List;
 public class Ejercicio14 {
     public static void main(String[] args) {
         List<Integer> numeros = crearListaEnteros(20);
-
         procesarSublista(numeros, 5, 10);
-
         System.out.println(numeros);
     }
 
@@ -38,12 +36,8 @@ public class Ejercicio14 {
      * @param fin de la sublista (excluido).
      */
     public static void procesarSublista(List<Integer> lista, int inicio, int fin) {
-        if (inicio < 0 || fin > lista.size() || inicio >= fin) {
-            return;
-        }
-
+        if (inicio < 0 || fin > lista.size() || inicio >= fin) return;
         List<Integer> sublista = lista.subList(inicio, fin);
-
         for (int i = 0; i < sublista.size(); i++) {
             if (sublista.get(i) % 3 != 0) {
                 sublista.set(i, 0);

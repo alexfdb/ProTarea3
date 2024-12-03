@@ -16,19 +16,16 @@ public class Ejercicio19 {
         nombres.add("Juan");
         nombres.add("Amalia");
 
-        char letraEspecifica = 'A';
-        String nuevoNombre = "Generico";
-
-        reemplazarNombres(nombres, letraEspecifica, nuevoNombre);
+        reemplazarNombres(nombres, 'A', "Generico");
 
         System.out.println(nombres);
     }
 
     /**
-     * Reemplaza todos los nombres que comienzan con una letra específica por un nuevo valor.
-     * @param lista La lista de nombres.
-     * @param letra La letra con la que comienza el nombre.
-     * @param nuevoNombre El nombre con el que se reemplazará.
+     * Método que reemplaza todos los nombres que comienzan con una letra específica por un nuevo nombre.
+     * @param lista a tratar.
+     * @param letra con la que comienza el nombre.
+     * @param nuevoNombre con el que se reemplazará.
      */
     public static void reemplazarNombres(List<String> lista, char letra, String nuevoNombre) {
         for (int i = 0; i < lista.size(); i++) {

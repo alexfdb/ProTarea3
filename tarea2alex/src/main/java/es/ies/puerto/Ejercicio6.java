@@ -15,6 +15,7 @@ public class Ejercicio6 {
         List<Integer> enteros2 = new ArrayList<>(Arrays.asList(1, 2, 3));
         agregarDe1A10SiListaVacia(enteros1);
         agregarDe1A10SiListaVacia(enteros2);
+        System.out.println(enteros1);
         List<Integer> enterosMultiplicados = productoDeLosElementos(enteros1, enteros2);
         System.out.println(enterosMultiplicados);
     }
@@ -28,7 +29,9 @@ public class Ejercicio6 {
         if(lista == null) return false;
         if(lista.isEmpty()) {
             for (int i = 1; i <= 10; i++) {
+                if(i % 2 != 0) {
                 lista.add(i);
+                }
             }
             return true;
         }

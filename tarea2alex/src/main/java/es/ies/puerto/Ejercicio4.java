@@ -26,6 +26,7 @@ public class Ejercicio4 {
      * @return la nueva lista sin elementos repetidos.
      */
     public static List<Integer> obtenerUnicosDeDosListas(List<Integer> lista1, List<Integer> lista2) {
+        if(lista1 == null || lista2 == null) return null;
         List<Integer> lista1Copia = new ArrayList<>(lista1);
         List<Integer> lista2Copia = new ArrayList<>(lista2);
         List<Integer> listaNueva = new ArrayList<>();

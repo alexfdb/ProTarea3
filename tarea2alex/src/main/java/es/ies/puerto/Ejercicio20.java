@@ -12,77 +12,68 @@ public class Ejercicio20 {
     public static void main(String[] args) {
         List<List<String>> listaDeListas = new ArrayList<>();
         
-        listaDeListas.add(new ArrayList<>());
-        listaDeListas.add(new ArrayList<>());
-        listaDeListas.add(new ArrayList<>());
+        listaDeListas.add(creaLista());
+        listaDeListas.add(creaLista());
+        listaDeListas.add(creaLista());
 
-        agregarElementoSublista(listaDeListas, 0, "Elemento 1");
-        agregarElementoSublista(listaDeListas, 1, "Elemento 2");
-        agregarElementoSublista(listaDeListas, 2, "Elemento 3");
+        addElemento(listaDeListas.get(0), "Elemento1");
+        addElemento(listaDeListas.get(1), "Elemento2");
+        addElemento(listaDeListas.get(2), "Elemento3");
 
         System.out.println("Lista de listas después de agregar elementos:");
         System.out.println(listaDeListas);
 
-        moverElemento(listaDeListas, 0, 1, "Elemento 1");
+        moverElemento(listaDeListas.get(0), listaDeListas.get(1), "Elemento1");
 
         System.out.println("\nLista de listas después de mover el elemento:");
         System.out.println(listaDeListas);
 
-        eliminarSublistasVacias(listaDeListas);
+        deleteProducto(listaDeListas.get(0), "Elemento2");
 
         System.out.println("\nLista de listas después de eliminar sublistas vacías:");
         System.out.println(listaDeListas);
     }
 
     /**
-     * Agrega un elemento a una sublista específica dentro de la lista de listas.
-     * @param listaDeListas La lista que contiene las sublistas.
-     * @param sublistaIndex El índice de la sublista donde se agregará el elemento.
-     * @param elemento El elemento que se agregará a la sublista.
+     * Función que crea una lista.
+     * @return una lista vacía.
      */
-    public static void agregarElementoSublista(List<List<String>> listaDeListas, int sublistaIndex, String elemento) {
-        if (sublistaIndex >= 0 && sublistaIndex < listaDeListas.size()) {
-            listaDeListas.get(sublistaIndex).add(elemento);
-        } else {
-            System.out.println("Índice de sublista no válido.");
-        }
+    static List<String> creaLista() {
+        return new ArrayList<>();
     }
 
     /**
-     * Mueve un elemento de una sublista a otra.
-     * @param listaDeListas La lista que contiene las sublistas.
-     * @param fromIndex El índice de la sublista de origen.
-     * @param toIndex El índice de la sublista de destino.
-     * @param elemento El elemento que se moverá.
+     * Función que agrega un producto a una lista.
+     * @param lista a la que añadir.
+     * @param producto a añadir.
+     * @return false si la lista o el producto es null.
      */
-    public static void moverElemento(List<List<String>> listaDeListas, int fromIndex, int toIndex, String elemento) {
-        if (fromIndex >= 0 && fromIndex < listaDeListas.size() &&
-            toIndex >= 0 && toIndex < listaDeListas.size()) {
-            List<String> fromSublista = listaDeListas.get(fromIndex);
-            List<String> toSublista = listaDeListas.get(toIndex);
-            
-            if (fromSublista.contains(elemento)) {
-                fromSublista.remove(elemento);
-                toSublista.add(elemento);
-            } else {
-                System.out.println("El elemento no existe en la sublista de origen.");
-            }
-        } else {
-            System.out.println("Índice de sublistas no válido.");
-        }
+    static boolean addElemento(List<String> lista, String elemento) {
+        if(lista == null || elemento == null) return false;
+        return lista.add(elemento);
     }
 
     /**
-     * Elimina las sublistas vacías de la lista de listas.
-     * @param listaDeListas La lista que contiene las sublistas.
+     * Función que elimina un producto de una lista.
+     * @param lista donde eliminar el producto
+     * @param producto a eliminar.
+     * @return
      */
-    public static void eliminarSublistasVacias(List<List<String>> listaDeListas) {
-        Iterator<List<String>> iterator = listaDeListas.iterator();
-        while (iterator.hasNext()) {
-            List<String> sublista = iterator.next();
-            if (sublista.isEmpty()) {
-                iterator.remove();
-            }
-        }
+    static boolean deleteProducto(List<String> lista, String producto) {
+        if(lista == null || lista.isEmpty() || producto == null) return false;
+        return lista.remove(producto);
+    }
+
+    /**
+     * Funcíon que mueve un producto de una lista a otra.
+     * @param listaOrigen
+     * @param listaDestino
+     * @param producto a mover.
+     * @return true si el prducto fue movido.
+     */
+    static boolean moverElemento(List<String> listaOrigen, List<String> listaDestino, String producto) {
+        if(!listaOrigen.contains(producto) || listaDestino.contains(producto)) return false;
+        deleteProducto(listaOrigen, producto);
+        return addElemento(listaDestino, producto);
     }
 }

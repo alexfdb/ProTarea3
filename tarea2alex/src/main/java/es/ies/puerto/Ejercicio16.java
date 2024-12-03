@@ -10,7 +10,7 @@ import java.util.List;
  * listas separadas con los tres mejores estudiantes y los que están por debajo del promedio.
  */
 public class Ejercicio16 {
-        public static void main(String[] args) {
+    public static void main(String[] args) {
         List<ResultadoExamen> resultados = new ArrayList<>();
         resultados.add(new ResultadoExamen("Alex", 8));
         resultados.add(new ResultadoExamen("Nico", 7));
@@ -18,16 +18,12 @@ public class Ejercicio16 {
         resultados.add(new ResultadoExamen("Lucía", 6));
         resultados.add(new ResultadoExamen("Jorge", 8));
         resultados.add(new ResultadoExamen("Ana", 5));
-
         List<ResultadoExamen> mejoresEstudiantes = obtenerTresMejores(resultados);
-
         List<ResultadoExamen> porDebajoDelPromedio = filtrarPorDebajoDelPromedio(resultados);
-
         System.out.println("Tres mejores estudiantes:");
         for (ResultadoExamen estudiante : mejoresEstudiantes) {
             System.out.println(estudiante);
         }
-
         System.out.println("\nEstudiantes por debajo del promedio:");
         for (ResultadoExamen estudiante : porDebajoDelPromedio) {
             System.out.println(estudiante);
