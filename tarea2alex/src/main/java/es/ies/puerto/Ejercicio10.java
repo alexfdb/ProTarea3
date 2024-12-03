@@ -24,11 +24,13 @@ public class Ejercicio10 {
      */
     public static boolean nombreAGenerico(List<String> lista, int valor) {
         if(lista == null) return false;
-        for (String elemento : lista) {
-            if(elemento.length() > valor) {
-                elemento = "GENÉRICO";
+        boolean modificado = false;
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).length() > valor) {
+                lista.set(i, "GENÉRICO");
+                modificado = true;
             }
         }
-        return true;
+        return modificado;
     }
 }
