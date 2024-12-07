@@ -18,7 +18,7 @@ public class Ejercicio3 {
     }
 
     /**
-     * Función que duplica el valor de los elmentos de una lista.
+     * Duplica el valor de los elmentos de una lista.
      * @param lista a la que duplicar el valor de sus elementos.
      * @return una nueva lista con los valores de la original duplicados.
      */
@@ -30,5 +30,4 @@ public class Ejercicio3 {
         }
         return duplicado;
     }
-
 }

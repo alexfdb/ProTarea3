@@ -17,7 +17,7 @@ public class Ejercicio2 {
     }
 
     /**
-     * Función que obtiene un elemento de una lista por medio de su indice.
+     * Obtiene un elemento de una lista por medio de su indice.
      * @param lista en la que buscar.
      * @param indice en el cual buscar el elemento.
      * @return el elemento buscado.

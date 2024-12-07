@@ -9,13 +9,13 @@ import java.util.List;
  * Descripción: Crea una lista de cantidad números consecutivos comenzando desde inicio y la devuelve.
  */
 public class Ejercicio1 {
+    static List<Integer> listaConsecutiva = crearListaConsecutiva(0, 0);
     public static void main(String[] args) {
-        List<Integer> listaConsecutiva = crearListaConsecutiva(0, 0);
         System.out.println(listaConsecutiva);
     }
 
     /**
-     * Función que crea una lista de numeros consecutivos.
+     * Crea una lista de numeros consecutivos.
      * @param inicio con que numero comienza la lista.
      * @param cantidad de números en la lista.
      * @return la lista con los números consecutivos especificados.
