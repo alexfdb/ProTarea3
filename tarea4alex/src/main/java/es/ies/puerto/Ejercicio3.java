@@ -10,7 +10,6 @@ import java.util.Vector;
  * Resultado esperado: Vector antes: [Azul, Amarillo, Verde, Anaranjado]. Vector después: [Verde].
  */
 public class Ejercicio3 {
-    private static final String Collections = null;
         static Vector<String> colores = new Vector<>(Arrays.asList("Azul", "Amarillo", "Verde", "Anaranjado"));
         public static void main(String[] args) {
             eliminarPorCondicion(colores, "a");
