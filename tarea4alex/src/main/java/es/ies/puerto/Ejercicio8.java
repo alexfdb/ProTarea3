@@ -1,6 +1,7 @@
 package es.ies.puerto;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Vector;
 /**
@@ -18,15 +19,21 @@ public class Ejercicio8 {
         System.out.println(solucion);
     }
 
+    /**
+     * Fusiona dos listas eliminando sus duplicados.
+     * @param lista1 
+     * @param lista2
+     * @return una nueva lista sin duplicados.
+     */
     public static List<String> fusionarVectores(List<String> lista1, List<String> lista2) {
         if(lista1 == null || lista1.isEmpty()) return new ArrayList<>();
         if(lista2 == null || lista2.isEmpty()) return new ArrayList<>();
         List<String> resultado = new ArrayList(Arrays.asList(lista1));
-        for (int i = 0; i < lista2.size(); i++) {
-            if(!resultado.contains(lista2.get(i))) {
-                resultado.add(lista2.get(i));
+        for (String objeto : lista2) {
+            if(!resultado.contains(objeto)) {
+                resultado.add(objeto);
             }
         }
-        return resultado;
+        return new ArrayList<>(new HashSet<>(resultado));
     }
 }
